@@ -12,11 +12,8 @@ import java.util.List;
 public class HeuristicBayesianNetwork extends AbstractBayesianNetwork {
 
     List<HeuristicNode> heuristicNodes = new ArrayList<HeuristicNode>();
-    //List<HeuristicNodePair> mutualInformationTable = new ArrayList<HeuristicNodePair>();
-    double[][] mutualInformationTable;
-    boolean[][] usedPairs;
-    int[][] adjacencyMatrix;
-
+    HeuristicDataTable hdt;
+    //List<HeuristicNodePair> hdt.getMutualInformationTable() = new ArrayList<HeuristicNodePair>();
 
     @Override
     public void createBayesianNetwork() {
@@ -53,25 +50,27 @@ public class HeuristicBayesianNetwork extends AbstractBayesianNetwork {
         int[][] eventTable = {{1, 1, 0},
                 {1, 0, 1},
                 {0, 1, 1}};
-        this.eventsTable = eventTable;
+        HeuristicDataTable dt = new HeuristicDataTable();
+
         String names[] = {"A", "B", "C"};
-        this.eventsNames = names;
-        for (int i = 0; i < eventsNames.length; i++) {
+        for (int i = 0; i < getDataTable().getEventsNames().length; i++) {
             heuristicNodes.add(new HeuristicNode(names[i]));
         }
-        adjacencyMatrix = new int[names.length][names.length];
+        dt.setEventsNames(names);
+        dt.setAdjacencyMatrix(new int[names.length][names.length]);
+        hdt = dt;
     }
 
     private void fillMutualInformationTable() {
-        usedPairs = new boolean[eventsNames.length][eventsNames.length];
-        mutualInformationTable = new double[eventsNames.length][eventsNames.length];
-        for(int i = 0; i < eventsNames.length; i++) {
-            for(int j = i + 1; j < eventsNames.length; j++) {
-                double iFreq = calculateFrequency(i) / (double) eventsTable.length;
-                double jFreq = calculateFrequency(j) / (double) eventsTable.length;
-                double ijFreq = calculatePairFrequency(i,j) / (double) eventsTable.length;
+        hdt.setUsedPairs(new boolean[getDataTable().getEventsNames().length][getDataTable().getEventsNames().length]);
+        hdt.setMutualInformationTable(new double[getDataTable().getEventsNames().length][getDataTable().getEventsNames().length]);
+        for(int i = 0; i < getDataTable().getEventsNames().length; i++) {
+            for(int j = i + 1; j < getDataTable().getEventsNames().length; j++) {
+                double iFreq = calculateFrequency(i) / (double) getDataTable().getEventsTable().length;
+                double jFreq = calculateFrequency(j) / (double) getDataTable().getEventsTable().length;
+                double ijFreq = calculatePairFrequency(i,j) / (double) getDataTable().getEventsTable().length;
                 double ijMI =  ijFreq * Math.log(ijFreq / (iFreq * jFreq));
-                mutualInformationTable[i][j] = ijMI;
+                hdt.getMutualInformationTable()[i][j] = ijMI;
             }
         }
     }
@@ -80,31 +79,31 @@ public class HeuristicBayesianNetwork extends AbstractBayesianNetwork {
         HeuristicNodePair maxMIpair = null;
         double maxMI = 0;
         int maxI = 0,maxJ = 0;
-        for(int i = 0; i < mutualInformationTable.length; i++) {
-            for (int j = 0; j < mutualInformationTable.length; j++) {
-                if (mutualInformationTable[i][j] > maxMI && !usedPairs[i][j]) {
+        for(int i = 0; i < hdt.getMutualInformationTable().length; i++) {
+            for (int j = 0; j < hdt.getMutualInformationTable().length; j++) {
+                if (hdt.getMutualInformationTable()[i][j] > maxMI && !hdt.getUsedPairs()[i][j]) {
                     maxI = i;
                     maxJ = j;
-                    maxMI = mutualInformationTable[i][j];
+                    maxMI = hdt.getMutualInformationTable()[i][j];
                 }
             }
         }
-        usedPairs[maxI][maxJ] = true;
+        hdt.getUsedPairs()[maxI][maxJ] = true;
         return new int[] {maxI, maxJ};
     }
 
     private int calculateFrequency(int k) {
         int res = 0;
-        for (int col = 0; col < eventsTable.length; col++) {
-            res += eventsTable[col][k];
+        for (int col = 0; col < getDataTable().getEventsTable().length; col++) {
+            res += getDataTable().getEventsTable()[col][k];
         }
         return res;
     }
 
     private int calculatePairFrequency(int i, int j) {
         int res = 0;
-        for (int col = 0; col < eventsTable.length; col++) {
-            if (eventsTable[col][i] == 1 && eventsTable[col][j] == 1) {
+        for (int col = 0; col < getDataTable().getEventsTable().length; col++) {
+            if (getDataTable().getEventsTable()[col][i] == 1 && getDataTable().getEventsTable()[col][j] == 1) {
                 res += 1;
             }
         }

@@ -1,6 +1,5 @@
 package com.network.common;
 
-import java.lang.String;
 import java.util.List;
 
 /**
@@ -8,8 +7,8 @@ import java.util.List;
  */
 public abstract class AbstractBayesianNetwork {
 
-    protected int[][] eventsTable;
-    protected String[] eventsNames;
+    private DataTable dataTable;
+    private List<AbstractNode> abstractNodes;
 
     public abstract void createBayesianNetwork();
     public abstract void doBayesianNetworkIteration();
@@ -18,4 +17,15 @@ public abstract class AbstractBayesianNetwork {
     //public abstract void loadDataFromFile();
     public abstract void loadDataFromProgram();
 
+    public DataTable getDataTable() {
+        return dataTable;
+    }
+
+    public void setDataTable(DataTable dataTable) {
+        this.dataTable = dataTable;
+    }
+
+    public void setAbstractNodes(List<AbstractNode> abstractNodes) {
+        this.abstractNodes = abstractNodes;
+    }
 }

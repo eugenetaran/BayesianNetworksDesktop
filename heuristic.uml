@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.network.heuristic</OriginalElement>
+  <nodes>
+    <node x="944.0619047619047" y="430.5">com.network.heuristic.HeuristicNodePair</node>
+    <node x="-57.25" y="659.25">com.network.control.MobileDevicePart</node>
+    <node x="704.05" y="273.5">com.network.heuristic.HeuristicNode</node>
+    <node x="424.737619047619" y="617.0">com.network.heuristic.HeuristicBayesianNetwork</node>
+    <node x="-143.25000000000006" y="172.75">com.network.common.AbstractNode</node>
+    <node x="581.25" y="460.5">com.network.heuristic.FourNodes</node>
+    <node x="-206.25" y="40.0">com.network.common.NodeProbabilityTable</node>
+    <node x="-207.75" y="420.25">com.network.common.AbstractBayesianNetwork</node>
+    <node x="350.49999999999994" y="421.25">com.network.heuristic.HeuristicDataTable</node>
+    <node x="46.99999999999994" y="283.75">com.network.common.DataTable</node>
+    <node x="548.75" y="292.0">com.network.util.NodeRelations</node>
+    <node x="-376.0" y="661.75">com.network.control.LoadDataFromStoragePart</node>
+    <node x="754.3" y="75.75">com.network.heuristic.HeuristicLink</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.network.heuristic.HeuristicBayesianNetwork" target="com.network.heuristic.FourNodes">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.common.AbstractBayesianNetwork" target="com.network.common.DataTable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.common.AbstractNode" target="com.network.common.NodeProbabilityTable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicDataTable" target="com.network.common.DataTable">
+      <point x="0.0" y="-48.0" />
+      <point x="42.75" y="37.0" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicBayesianNetwork" target="com.network.heuristic.HeuristicNode">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.common.AbstractBayesianNetwork" target="com.network.common.AbstractNode">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.control.MobileDevicePart" target="com.network.control.LoadDataFromStoragePart">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicNodePair" target="com.network.heuristic.HeuristicNode">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicBayesianNetwork" target="com.network.common.AbstractBayesianNetwork">
+      <point x="-176.57142857142856" y="-136.5" />
+      <point x="24.166190476190422" y="563.25" />
+      <point x="28.25" y="565.75" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicBayesianNetwork" target="com.network.heuristic.HeuristicDataTable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.FourNodes" target="com.network.util.NodeRelations">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.FourNodes" target="com.network.heuristic.HeuristicNode">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicNode" target="com.network.heuristic.HeuristicLink">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicNode" target="com.network.common.AbstractNode">
+      <point x="-87.375" y="-26.0" />
+      <point x="731.925" y="245.0" />
+      <point x="169.74999999999994" y="245.0" />
+      <point x="34.75" y="37.0" />
+    </edge>
+    <edge source="com.network.control.MobileDevicePart" target="com.network.common.AbstractBayesianNetwork">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.network.heuristic.HeuristicLink" target="com.network.heuristic.HeuristicNode">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="436.5" y="421.125" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

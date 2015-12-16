@@ -8,6 +8,7 @@ import java.util.List;
 public abstract class AbstractNode {
     protected String name;
     protected List<AbstractNode> directedNodes;
+    protected NodeProbabilityTable nodeProbabilityTable;
 
     public String getName() {
         return name;
